@@ -123,6 +123,7 @@
                     <i class="bi bi-house-door-fill"></i>
                     <div>Dashboard</div>
                 </a>
+                @hasrole('SuperAdmin')
                 <a href="{{ route('categories.index') }}" class="flex hover:ml-4 w-[90%] hover:text-blue-500 p-2 pl-8 rounded-full transform ease-in-out duration-300 flex-row items-center space-x-3 before:transition-all {{ request()->routeIs('categories.index') ? 'text-blue-600 ' : '' }}">
                     <i class="bi bi-list-task"></i>
                     <div>Categories</div>
@@ -135,8 +136,16 @@
                     <i class="bi bi-cart4"></i>
                     <div>Transaksi</div>
                 </a>
+                @endhasrole
+                @hasrole('Admin')
+                <a href="{{ route('transactions-kasir.index') }}" class="flex hover:ml-4 w-[90%] hover:text-blue-500 p-2 pl-8 rounded-full transform ease-in-out duration-300 flex-row items-center space-x-3 before:transition-all {{ request()->routeIs('transactions-kasir.index') ? 'text-blue-600 ' : '' }}">
+                    <i class="bi bi-cart4"></i>
+                    <div>Transaksi</div>
+                </a>
+                @endhasrole
             </div>
             <!-- MINI SIDEBAR -->
+            @hasrole('SuperAdmin')
             <div class="mini mt-20 flex flex-col space-y-1 w-full h-[calc(100vh)]">
                 <button onclick="window.location.href='{{ route('home') }}'" class="hover:ml-4 justify-end pr-3 hover:text-blue-500 w-full bg-[#1E293B] p-3 rounded-full transform ease-in-out duration-300 flex before:transition-all {{ request()->routeIs('home') ? 'text-blue-600 ' : 'text-white' }}">
                     <i class="bi bi-house-door-fill"></i>
@@ -151,6 +160,17 @@
                     <i class="bi bi-cart4"></i>
                 </button>
             </div>
+            @endhasrole
+            @hasrole('Admin')
+            <div class="mini mt-20 flex flex-col space-y-1 w-full h-[calc(100vh)]">
+                <button onclick="window.location.href='{{ route('home') }}'" class="hover:ml-4 justify-end pr-3 hover:text-blue-500 w-full bg-[#1E293B] p-3 rounded-full transform ease-in-out duration-300 flex before:transition-all {{ request()->routeIs('home') ? 'text-blue-600 ' : 'text-white' }}">
+                    <i class="bi bi-house-door-fill"></i>
+                </button>
+                <button onclick="window.location.href='{{ route('transactions-kasir.index') }}'" class="hover:ml-4 justify-end pr-3 hover:text-blue-500 w-full bg-[#1E293B] p-3 rounded-full transform ease-in-out duration-300 flex before:transition-all {{ request()->routeIs('transactions-kasir.index') ? 'text-blue-600 ' : 'text-white' }}">
+                    <i class="bi bi-cart4"></i>
+                </button>
+            </div>
+            @endhasrole
         </aside>
 
         <!-- Page Content -->
