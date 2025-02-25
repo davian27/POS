@@ -236,12 +236,9 @@
 
                     <!-- Pilih Pengguna -->
                     <div class="form-group">
-                        <label for="user_id">Pengguna</label>
-                        <select name="user_id" id="user_id" class="form-control">
-                            @foreach($admins as $customer)
-                            <option value="{{ $customer->id }}">{{ $customer->name }}</option>
-                            @endforeach
-                        </select>
+                        <label>Admin</label>
+                        <p class="form-control-plaintext">{{ $transaction->admin->name }}</p>
+                        <input type="hidden" name="user_id" value="{{ $transaction->user_id }}">
                     </div>
 
                     <!-- Deskripsi -->
